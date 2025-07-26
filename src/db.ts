@@ -1,4 +1,7 @@
 import mongoose, { Schema,model } from "mongoose";
+
+import dotenv from "dotenv";
+dotenv.config();
 const userSchema = new Schema({
 
     username:{type:String,unique:true},
@@ -17,6 +20,6 @@ const ContentSchema = new Schema({
 
 export const ContentModel = model("Content",ContentSchema);
 
-mongoose.connect("mongodb+srv://shri:csv@cluster0.wsy8rwf.mongodb.net/secondbrain?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect(process.env.DB_URL as string);
 
  export const userModel = model("User",userSchema);
